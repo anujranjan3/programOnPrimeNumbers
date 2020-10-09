@@ -3,7 +3,7 @@
 count=0;
 
 printPrimeNumbers () {
-	for (( i=$count; i>0; i-- ))
+	for (( i=$count; i>0; i-=2 ))
 	do
 	 echo ${primeNumbers[i]};
 	done
@@ -11,7 +11,7 @@ printPrimeNumbers () {
 
 primeMain () {
 
-	for (( i=700; i<900; i++ ))
+	for (( i=1; i<540; i++ ))
 	do
 		flag=0;
 		for (( j=2; j<=i/2; j++ ))
@@ -29,9 +29,8 @@ primeMain () {
 		fi
 	done
 
-echo "Printing "$count" prime Numbers between 700 and 900 in reverse order : "
+echo "Printing First 50 alternate prime Numbers in reverse order : "
 printPrimeNumbers $count;
 
 }
 primeMain;
-
