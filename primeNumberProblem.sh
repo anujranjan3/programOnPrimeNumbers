@@ -1,27 +1,17 @@
 #!/bin/bash
 
-echo "Printing the first hundred prime number having 1 on the unit place";
 count=0;
 
-checkForUnit () {
-	local unitPrime;
-	unitPrime=$(($i%10));
-	if [ $unitPrime -eq 1 ]
-	then
-		primeNumbers[count]=$i;
-		(( count++ ));
-		echo $i $count;
-	fi
-}
-
 printPrimeNumbers () {
-	echo "Hundred prime Numbers having unit digit as 1 are :"${primeNumbers[*]};
+	for (( i=$count; i>0; i-- ))
+	do
+	 echo ${primeNumbers[i]};
+	done
 }
 
 primeMain () {
-while [ $count -lt 100 ]
-do
-	for (( i=2; i<2802; i++ ))
+
+	for (( i=1; i<540; i++ ))
 	do
 		flag=0;
 		for (( j=2; j<=i/2; j++ ))
@@ -34,12 +24,14 @@ do
 		done
 		if [ $flag -eq 0 ]
 		then
-			checkForUnit $i;
+			primeNumbers[count]=$i;
+			(( count++ ));
 		fi
 	done
-done
 
-printPrimeNumbers;
+echo $count;
+echo "Printing First 100 prime Numbers in reverse order : "
+printPrimeNumbers $count;
 
 }
 primeMain;
